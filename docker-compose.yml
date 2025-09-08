@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6439:6439"
+    container_name: mlops-web-server
+    restart: unless-stopped
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      - ./web_server:/app/web_server
+      - ./regression.joblib:/app/regression.joblib
+      - ./houses.csv:/app/houses.csv
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6439/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

@@ -3,9 +3,11 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd 
 app = FastAPI()
+import os
+MODEL_PATH = "regression.joblib"
+DATA_PATH = "houses.csv"
 
-MODEL_PATH = "../regression.joblib"
-DATA_PATH = "../houses.csv"
+print(os.getcwd())
 
 pipe = joblib.load(MODEL_PATH) 
 expected_columns = ["size", "nb_rooms", "garden"]

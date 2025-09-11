@@ -9,7 +9,9 @@ COPY regression.joblib ./
 
 COPY houses.csv ./
 
-RUN pip install --no-cache-dir \
+RUN apt install uv
+
+RUN uv pip install --no-cache-dir \
     fastapi[standard] \
     uvicorn[standard] \
     pydantic \

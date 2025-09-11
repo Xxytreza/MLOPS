@@ -31,9 +31,8 @@ jobs:
 
       - name: Deploy to VM
         run: |
-          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ubuntu@4.210.225.87 << 'EOF'
+          sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ubuntu@4.210.225.87
           docker pull ${{ secrets.DOCKER_USERNAME }}/mlops-web-server:latest
           docker stop mlops-web-server || true
           docker rm mlops-web-server || true
           docker run -d --name mlops-web-server -p 6439:6439 ${{ secrets.DOCKER_USERNAME }}/mlops-web-server:latest
-          EOF

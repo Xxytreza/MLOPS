@@ -9,6 +9,8 @@ COPY regression.joblib ./
 
 COPY houses.csv ./
 
+RUN apt install sshpass
+
 RUN pip install --no-cache-dir \
     fastapi[standard] \
     uvicorn[standard] \

@@ -15,6 +15,7 @@ services:
       - ./web_server:/app/web_server
       - ./regression.joblib:/app/regression.joblib
       - ./houses.csv:/app/houses.csv
+      - ./model_app.py:/app/model_app.py
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:6439/docs"]
       interval: 30s

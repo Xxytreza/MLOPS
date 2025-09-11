@@ -4,8 +4,8 @@ import joblib
 import pandas as pd 
 app = FastAPI()
 import os
-MODEL_PATH = "regression.joblib"
-DATA_PATH = "houses.csv"
+MODEL_PATH = "/app/regression.joblib"
+DATA_PATH = "/app/houses.csv"
 
 print(os.getcwd())
 
